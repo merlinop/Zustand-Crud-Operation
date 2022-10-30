@@ -1,24 +1,28 @@
 import Head from 'next/head'
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import useStore from '../store/useStore'
 import Link from 'next/link'
 import Router from 'next/router'
+import Header from './Header'
 
 
 const Blog = () => {
 
+  
   const post = useStore((state) => state.post)
   const fetchPost = useStore((state) => state.fetchPost)
-  const SearchPost = useStore((state) => state.SearchPost)
+  // const SearchPost = useStore((state) => state.SearchPost)
 
   useEffect(() => {
     fetchPost()
-    // SearchPost()
+    
   }, [])
 
 
+
   return (
-    <div className='w-full  h-[60vh] md:h-[60vh] overflow-y-scroll z-[10] scroll-smooth'>
+        <>
+         <div className='w-full  h-[60vh] md:h-[60vh] overflow-y-scroll z-[10] scroll-smooth'>
       <Head> 
           <title>HomePage</title>
       </Head>
@@ -35,7 +39,19 @@ const Blog = () => {
         </div>
       ))}
 
+      {
+        !post.length && (
+          <div className='flex flex-col font-bold items-center w-full'>
+            <h1 className='text-2xl mt-7'>No content found</h1>
+            <Link href={"/"}>
+                <p className='cursor-pointer mt-4 text-red-600 text-sm hover:text-blue-700'>Return back to HomePage</p>
+            </Link>
+          </div>
+        )
+      }
+
     </div>
+        </>
   )
 }
 
