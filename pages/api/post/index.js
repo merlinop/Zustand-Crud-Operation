@@ -10,12 +10,12 @@ export default function handler(req,res) {
 
         const comment = req.body.comment
         const title = req.body.title
-        const id = Date.now()
+        const id = Post.length + 1
         
         const newPost = {comment,title,id}
         console.log(Post)
         
         Post.push(newPost)
-        req.status(200).json(Post)
+        res.status(201).json(Post)
     }
 }

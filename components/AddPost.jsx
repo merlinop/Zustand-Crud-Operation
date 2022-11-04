@@ -14,6 +14,7 @@ const AddPost = () => {
     const url = "http://localhost:3000/api/post"
 
     const postWays = async (title,comment) => {
+      
         const res = await fetch(url, {
           method:'POST',
           body: JSON.stringify({title, comment}),
@@ -21,13 +22,14 @@ const AddPost = () => {
             'Content-Type' : 'application/json'
           }
         })
+
         const data = await res.json()
         console.log(data)
     }
 
     const handleSubmit = (title,comment) => {
       postWays(title,comment)
-      // setIsSubmited((prev) => !prev)
+      setIsSubmited((prev) => !prev)
       
     }
 
@@ -41,7 +43,7 @@ const AddPost = () => {
                 type="text" 
                 value={title}
                 name="title"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => setTitle((e.target.value.toUpperCase()))}
                 required
                 className='w-1/2 border-2 rounded-md p-2 border-gray-300'
                 placeholder='Type title here...'
@@ -56,7 +58,7 @@ const AddPost = () => {
                placeholder='Type comment here..' 
                className='mt-2 rounded-lg p-2 border-2 border-gray-300'
                value={comment}
-               onChange={(e) => setComment(e.target.value)}
+               onChange={(e) => setComment((e.target.value).toUpperCase())}
                ></textarea>
 
           <button className='mt-5 py-2 px-4 bg-gray-600 text-lg text-white font-semibold rounded-lg hover:text-black/50 hover:opacity-80 w-1/2 place-self-center' onClick={() => handleSubmit(title,comment)}>
