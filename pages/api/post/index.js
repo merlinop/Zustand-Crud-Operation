@@ -1,4 +1,4 @@
-import Post from "../../../data/Post"
+import Post from "./data"
 
 
 
@@ -12,10 +12,11 @@ export default function handler(req,res) {
         const title = req.body.title
         const id = Post.length + 1
         
+        console.log(id)
         const newPost = {comment,title,id}
         console.log(Post)
         
         Post.push(newPost)
-        res.status(201).json(Post)
+        res.status(201).json(newPost)
     }
 }

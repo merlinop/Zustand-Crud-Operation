@@ -11,24 +11,24 @@ const AddPost = () => {
     
     const addPost = useStore((state) => state.addPost)
 
-    const url = "http://localhost:3000/api/post"
 
-    const postWays = async (title,comment) => {
+    // const postWays = async (title,comment) => {
       
-        const res = await fetch(url, {
-          method:'POST',
-          body: JSON.stringify({title, comment}),
-          headers: {
-            'Content-Type' : 'application/json'
-          }
-        })
+    //     const res = await fetch(url, {
+    //       method:'POST',
+    //       body: JSON.stringify({title, comment}),
+    //       headers: {
+    //         'Content-Type' : 'application/json'
+    //       }
+    //     })
 
-        const data = await res.json()
-        console.log(data)
-    }
+    //     const data = await res.json()
+    //     console.log(data)
+    // }
 
     const handleSubmit = (title,comment) => {
-      postWays(title,comment)
+      // postWays(title,comment)
+      addPost(title,comment)
       setIsSubmited((prev) => !prev)
       
     }

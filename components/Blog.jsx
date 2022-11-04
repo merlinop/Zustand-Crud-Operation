@@ -33,7 +33,7 @@ const Blog = () => {
            <h1 className='text-2xl font-bold tracking-wide cursor-pointer hover:opacity-60 ' >{post.title}</h1>
           </Link>
           
-           <p className='text-base w-3/4 mt-3 ml-2 text-gray-700'>{(post.comment).slice(0,85)}...<span className='font-bold text-xs text-blue-400 cursor-pointer hover:text-red-600 whitespace-nowrap' onClick={() => Router.push(`/blog/${id}`)}>Continue reading</span> </p>
+           <p className='text-base w-3/4 mt-3 ml-2 text-gray-700'>{(post.comment).slice(0,85)}...<span className='font-bold text-xs text-blue-400 cursor-pointer hover:text-red-600 whitespace-nowrap' onClick={() => Router.push(`/blog/${post.id - 1}`)}>Continue reading</span> </p>
           
            <span className='w-full border-b border-[2px] mt-4 border-gray-900'></span>
         </div>

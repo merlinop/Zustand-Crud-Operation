@@ -26,8 +26,7 @@ const useStore = create((set, get) => ({
       }
     })
     const data = await res.json()
-    set({post: data })
-    console.log(data)
+    
 
   }
 
