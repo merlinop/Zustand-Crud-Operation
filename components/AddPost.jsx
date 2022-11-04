@@ -26,6 +26,7 @@ const AddPost = () => {
     //     console.log(data)
     // }
 
+    // handle submit function
     const handleSubmit = (title,comment) => {
       // postWays(title,comment)
       addPost(title,comment)
@@ -36,8 +37,11 @@ const AddPost = () => {
 
   return (
       <>
+      {/* Add  Post section */}
     { !issubmited &&( <div className='w-full h-[60vh] overflow-y-scroll z-10'>
+      {/* New Post section */}
         <form onSubmit={(e) => e.preventDefault()} className="flex flex-col p-4">
+          {/* Topic Input */}
           <label className='text-xl font-semibold text-gray-700 mb-1'> Topic: </label>
           <input 
                 type="text" 
@@ -48,6 +52,7 @@ const AddPost = () => {
                 className='w-1/2 border-2 rounded-md p-2 border-gray-300'
                 placeholder='Type title here...'
                 />
+                {/* Comment input */}
           <label className='text-base font-semibold  text-gray-700 mt-3'> Comment:</label>
          <textarea 
               name="comment"
@@ -68,7 +73,7 @@ const AddPost = () => {
 
         </form>
     </div>)}
-
+      {/* IF SUBMITTED */}
     {
       issubmited && (
         <div className='p-4'>

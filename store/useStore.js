@@ -2,7 +2,9 @@ import create from 'zustand'
 import { useState } from 'react'
 
 
+
 const url = "http://localhost:3000/api/post"
+
 
 
 const useStore = create((set, get) => ({
@@ -18,7 +20,7 @@ const useStore = create((set, get) => ({
      set({ post: newData }) 
   },
   addPost: async (title,comment) => {
-    const res = await fetch(url, {
+    const res = await fetch("url", {
       method: 'POST',
       body: JSON.stringify({ title, comment }),
       headers: {
@@ -26,7 +28,8 @@ const useStore = create((set, get) => ({
       }
     })
     const data = await res.json()
-    
+    set({post: data})
+   
 
   }
 

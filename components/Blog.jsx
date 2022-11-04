@@ -26,7 +26,7 @@ const Blog = () => {
       <Head> 
           <title>HomePage</title>
       </Head>
-
+      {/* RENDER FROM API AND DISPLAY */}
       {post.length && post.map((post,id) => (
         <div key={id} className="flex flex-col py-2 px-2 items-start ">
           <Link href={`/blog/${id}`}>
@@ -39,6 +39,7 @@ const Blog = () => {
         </div>
       ))}
 
+        {/* if CONTENT IS EMPTY */}
       {
         !post.length && (
           <div className='flex flex-col font-bold items-center w-full'>
