@@ -9,15 +9,25 @@ const useStore = create((set, get) => ({
   post: [],
   fetchPost: async () => {
      const res = await fetch(url)
-     set({ post: await res.json() }) 
+     const data = await res.json()
+     set({post: data})
   },
-  searchText: "",
   searchPost:  (searchval) => {
     const newData =  get().post.filter((item) => {
-       return item.title.toLowerCase().includes(searchval) || item.comment.toLowerCase().includes(searchval)
-    }
-     )
+       return item.title.toLowerCase().includes(searchval) || item.comment.toLowerCase().includes(searchval)})
      set({ post: newData }) 
+  },
+  addPost: async (title,comment) => {
+    const res = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({ title, comment }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await res.json()
+    set({post: data })
+    console.log(data)
 
   }
 
@@ -26,3 +36,20 @@ const useStore = create((set, get) => ({
 
 
 export default useStore;
+
+
+// addPost: async (title, comment) => {
+//     const res = await fetch(url, {
+//         method: 'POST',
+//         body: JSON.stringify({title: title, comment:comment}),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     const data = await res.json()
+//     console.log(data)
+//     set({ post: data })
+
+    
+
+//   }
