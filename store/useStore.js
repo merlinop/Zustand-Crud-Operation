@@ -20,7 +20,7 @@ const useStore = create((set, get) => ({
      set({ post: newData }) 
   },
   addPost: async (title,comment) => {
-    const res = await fetch("url", {
+    const res = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({ title, comment }),
       headers: {
